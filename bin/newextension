@@ -72,7 +72,7 @@ cd templates do
     else
       open(target.to_s.gsub(/__extension__/, camelize(extension_name)), 'w') do |dst|
         dst.write(ERB.new(filename.read, $SAFE, '-').result(binding))
-        puts "create file:\n\t#{dst.path}"
+        puts "create: #{dst.path}"
       end
     end
   end
