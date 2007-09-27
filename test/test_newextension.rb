@@ -29,11 +29,12 @@ class TestNewextension < Test::Unit::TestCase
                     'chrome.manifest',
                     'install.rdf',
                     'Rakefile',
-                   ], Dir['**/*'])
+                   ].sort, Dir['**/*'].sort)
 
       assert_file_contains(/FooExtension/, 'chrome/content/FooExtension.js')
       assert_file_contains(/FooExtension/, 'chrome/content/FooExtension.js')
       assert_file_contains(/chrome:\/\/foo_extension/, 'chrome/content/overlay.xul')
+      assert_file_contains(/FooExtensionOverlay/, 'chrome/content/overlay.xul')
       assert_file_contains(/chrome:\/\/foo_extension/, 'chrome.manifest')
       assert_file_contains(/youpy/, 'install.rdf')
       assert_file_contains(/0\.11/, 'install.rdf')
