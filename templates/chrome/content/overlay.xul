@@ -1,5 +1,5 @@
 <?xml version="1.0" ?>
-<overlay id="HTTPTapperOverlay" xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+<overlay id="<%=camelize(extension_name)%>Overlay" xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
   <script type="application/x-javascript"
 	  src="chrome://<%=extension_name%>/content/<%=camelize(extension_name)%>.js" />
 </overlay>
