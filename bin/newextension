@@ -31,7 +31,7 @@ extension_dir = nil
 
 parser = OptionParser.new do |opts|
   opts.banner = <<BANNER
-Create a Firefox extension skeleton
+#{File.basename($0)}: create a Firefox extension skeleton
 
 Usage: #{File.basename($0)} [options] extension_dir
 
@@ -60,7 +60,8 @@ version = OPTIONS[:version]
 uuid = UUID.random_create.to_s
 
 templates = Pathname.new(File.dirname(__FILE__)).realpath + '../templates'
-extension_name = extension_dir.basename
+extension_name = extension_dir.basename.to_s
+package_name = extension_name.downcase.gsub(/[^a-z]/, '')
 
 cd templates do
   Pathname.glob('**/*').each do |filename|

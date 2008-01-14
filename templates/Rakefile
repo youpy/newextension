@@ -56,3 +56,41 @@ task :create_extension_xpi => [:create_chrome_jar, :create_chrome_manifest, :cre
   sh "cd #{BUILD_DIR} && zip -qr -9 ../../#{EXTENSION_NAME}-#{version_number}-fx.xpi *"
   rm_rf "build"
 end
+
+desc "install to local profile directory"
+task :install do
+  File.open("#{firefox_profile_dir}/extensions/#{extension_id}", 'w') do |f|
+    f.puts(Dir.pwd)
+  end
+end
+
+def firefox_profile_dir(name = nil)
+  name = 'default' unless name
+  
+  base = 
+    case RUBY_PLATFORM
+    when /darwin/
+      '~/Library/Application Support/Firefox/profiles'
+    when /win/
+      '~/Application Data/Mozilla/Firefox/Profiles'
+    else
+      '~/.mozilla/firefox'
+    end
+
+  path = Dir.glob("#{File.expand_path(base)}/*.#{name}")
+
+  if path.length == 1
+    path.first
+  else
+    raise
+  end
+end
+
+def extension_id
+  open('install.rdf','r') do |file|
+    install_rdf_xmldoc = Document.new(file)
+    install_rdf_xmldoc.elements.each('RDF/Description/em:id') do |element|
+      return element.text
+    end
+  end
+end
