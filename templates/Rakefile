@@ -64,6 +64,11 @@ task :install do
   end
 end
 
+desc "uninstall from local profile directory"
+task :uninstall do
+  File.unlink("#{firefox_profile_dir}/extensions/#{extension_id}")
+end
+
 def firefox_profile_dir(name = nil)
   name = 'default' unless name
   
