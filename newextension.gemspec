@@ -1,4 +1,3 @@
-(in /Users/youpy/tmp/newextension)
 Gem::Specification.new do |s|
   s.name = %q{newextension}
   s.version = "0.0.1"
