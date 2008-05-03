@@ -1,0 +1,8 @@
+<?xml version="1.0" ?>
+<overlay id="<%=camelize(extension_name)%>Overlay" xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+  <script type="application/x-javascript"
+	  src="chrome://<%=package_name%>/content/<%=camelize(extension_name)%>.js" />
+  <menupopup id="menu_ToolsPopup">
+    <menuitem label='<%=extension_name%>' oncommand='alert("hello. this is <%=extension_name%>")'/>
+  </menupopup>
+</overlay>

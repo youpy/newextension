@@ -1,0 +1,3 @@
+content	<%=package_name%>	chrome/content/
+overlay	chrome://browser/content/browser.xul	chrome://<%=package_name%>/content/overlay.xul
+skin	<%=package_name%>	classic/1.0	chrome/skin/
