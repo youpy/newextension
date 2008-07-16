@@ -2,11 +2,9 @@ Gem::Specification.new do |s|
   s.name = %q{newextension}
   s.version = "0.0.1"
 
-  s.specification_version = 2 if s.respond_to? :specification_version=
-
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["youpy"]
-  s.date = %q{2008-05-03}
+  s.date = %q{2008-07-17}
   s.default_executable = %q{newextension}
   s.description = %q{Create a Firefox extension skeleton}
   s.email = %q{youpy@buycheapviagraonlinenow.com}
@@ -18,9 +16,20 @@ Gem::Specification.new do |s|
   s.rdoc_options = ["--main", "README.txt"]
   s.require_paths = ["lib"]
   s.rubyforge_project = %q{newextension}
-  s.rubygems_version = %q{1.1.1}
+  s.rubygems_version = %q{1.2.0}
   s.summary = %q{Create a Firefox extension skeleton}
   s.test_files = ["test/test_helper.rb", "test/test_newextension.rb"]
 
-  s.add_dependency(%q<uuidtools>, [">= 0"])
+  if s.respond_to? :specification_version then
+    current_version = Gem::Specification::CURRENT_SPECIFICATION_VERSION
+    s.specification_version = 2
+
+    if current_version >= 3 then
+      s.add_runtime_dependency(%q<uuidtools>, [">= 0"])
+    else
+      s.add_dependency(%q<uuidtools>, [">= 0"])
+    end
+  else
+    s.add_dependency(%q<uuidtools>, [">= 0"])
+  end
 end

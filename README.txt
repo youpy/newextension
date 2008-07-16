@@ -1,37 +1,43 @@
-Installation:
 
-RubyGems >= 1.1.1
-$ sudo gem sources -a http://gems.github.com/
-$ sudo gem install youpy-newextension
+= newextension
 
-RubyGems < 1.1.1
-$ sudo gem install youpy-newextension --source=http://gems.github.com
+== Description
+creates a Firefox extension skeleton
 
-Usage:
+== Installation
 
-create skeleten
+=== Archive Installation
 
-$ newextension -a yourname foo
-$ cd foo
-$ ls -R
-Rakefile        chrome          chrome.manifest install.rdf
+    rake install
 
-./chrome:
-content skin
+=== Gem Installation
 
-./chrome/content:
-Foo.js          overlay.xul
+    gem install newextension
 
-./chrome/skin:
 
-create xpi
+== Features/Problems
 
-$ rake create_extension_xpi
 
-install in your local profile
+== Synopsis
 
-$ rake install
+=== Create Extension   
 
-uninstall from your local profile
+    newextension -a yourname foo
 
-$ rake uninstall
+=== Create xpi
+
+    rake create_extension_xpi
+
+=== Symlink In Your Local Profile
+
+    rake install
+
+=== Unlink From Your Local Profile
+
+    rake uninstall
+
+== Copyright
+
+Author::   youpy <youpy@buycheapviagraonlinenow.com>
+Copyright::   Copyright (c) 2008 youpy
+License::   The MIT License
