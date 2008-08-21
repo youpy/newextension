@@ -2,12 +2,12 @@
 <RDF xmlns="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
     xmlns:em="http://www.mozilla.org/2004/em-rdf#">
     <Description about="urn:mozilla:install-manifest">
-        <em:id>{<%=uuid%>}</em:id>
-        <em:name><%=camelize(extension_name)%></em:name>
-        <em:version><%=version%></em:version>
+        <em:id>{<%= uuid %>}</em:id>
+        <em:name><%= extension_name.camelize %></em:name>
+        <em:version><%= version %></em:version>
         <em:type>2</em:type>
-        <em:description>Description about this extension</em:description>
-        <em:creator><%=author%></em:creator>
+        <em:description><%= description %></em:description>
+        <em:creator><%= author %></em:creator>
         <em:targetApplication>
             <Description>
                 <em:id>{ec8030f7-c20a-464f-9b0e-13a3a9e97384}</em:id>
