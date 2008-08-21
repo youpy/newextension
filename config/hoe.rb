@@ -8,7 +8,7 @@ RUBYFORGE_PROJECT = 'newextension' # The unix name for your project
 HOMEPATH = "http://#{RUBYFORGE_PROJECT}.rubyforge.org"
 DOWNLOAD_PATH = "http://rubyforge.org/projects/#{RUBYFORGE_PROJECT}"
 EXTRA_DEPENDENCIES = [
-#  ['activesupport', '>= 1.3.1']
+ ['uuidtools', '>= 1.0.3']
 ]    # An array of rubygem dependencies [name, version]
 
 @config_file = "~/.rubyforge/user-config.yml"
@@ -53,7 +53,6 @@ $hoe = Hoe.new(GEM_NAME, VERS) do |p|
   p.summary = DESCRIPTION
   p.url = HOMEPATH
   p.rubyforge_name = RUBYFORGE_PROJECT if RUBYFORGE_PROJECT
-  p.extra_deps << ['uuidtools']
   p.test_globs = ["test/**/test_*.rb"]
   p.clean_globs |= ['**/.*.sw?', '*.gem', '.config', '**/.DS_Store']  #An array of file patterns to delete on clean.
   
