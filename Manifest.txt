@@ -11,6 +11,7 @@ app_generators/newextension/templates/chrome.manifest
 app_generators/newextension/templates/chrome/content/__extension__.js
 app_generators/newextension/templates/chrome/content/overlay.xul
 app_generators/newextension/templates/install.rdf
+app_generators/newextension/templates/update.rdf
 bin/newextension
 bin/newextension.orig
 config/hoe.rb

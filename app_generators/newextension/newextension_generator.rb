@@ -34,7 +34,7 @@ class NewextensionGenerator < RubiGen::Base
       BASEDIRS.each { |path| m.directory path }
 
       # Create stubs
-      m.template_copy_each %w[chrome.manifest Rakefile install.rdf]
+      m.template_copy_each %w[chrome.manifest Rakefile install.rdf update.rdf]
       m.template_copy_each %w[overlay.xul], "chrome/content"
       m.template "chrome/content/__extension__.js", "chrome/content/#{package_name.camelize}.js"
 

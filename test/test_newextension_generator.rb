@@ -31,6 +31,7 @@ class TestNewextensionGenerator < Test::Unit::TestCase
     assert_generated_file   "chrome.manifest"
     assert_generated_file   "Rakefile"
     assert_generated_file   "install.rdf"
+    assert_generated_file   "update.rdf"
     assert_generated_file   "chrome.manifest"
     assert_generated_file   "chrome/content/overlay.xul"
     assert_generated_file   "chrome/content/#{PROJECT_NAME.camelize}.js"

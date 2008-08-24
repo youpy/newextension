@@ -1,9 +1,11 @@
 # based on: http://gravelog.blogspot.com/2007/03/using-rake-to-build-firefox-extensions_04.html
 require 'rexml/document'
+require 'digest/sha1'
 include REXML
 
-EXTENSION_NAME="<%=extension_name%>"
+EXTENSION_NAME="<%= extension_name %>"
 BUILD_DIR="build/#{EXTENSION_NAME}"
+UPDATE_LINK="" # URL for updated xpi
 
 directory "#{BUILD_DIR}/chrome"
 task :create_buildchrome_dir => ["#{BUILD_DIR}/chrome"]
@@ -22,6 +24,10 @@ task :create_chrome_manifest => ["#{BUILD_DIR}/chrome.manifest"]
 
 desc "prepare the install.rdf file"
 file "#{BUILD_DIR}/install.rdf" => [:create_buildchrome_dir] do
+  open('install.rdf') do |f|
+    install_rdf_xmldoc = Document.new(f)
+    
+  end
   cp 'install.rdf', "#{BUILD_DIR}/install.rdf"
 end
 task :create_install_rdf => ["#{BUILD_DIR}/install.rdf"]
@@ -33,15 +39,35 @@ end
 
 desc "create the xpi file and use the version number in the file name"
 task :create_extension_xpi => [:create_chrome_jar, :create_chrome_manifest, :create_install_rdf] do
-  install_rdf_file = File.new('install.rdf','r')
-  install_rdf_xmldoc = Document.new(install_rdf_file)
-  version_number = ""
-  install_rdf_xmldoc.elements.each('RDF/Description/em:version') do |element|
-    version_number = element.text
+  sh "cd #{BUILD_DIR} && zip -qr -9 ../../#{xpi_filename} *"
+  rm_rf "build"
+end
+
+desc "update update.rdf"
+task :update_update_manifest => [:create_extension_xpi] do
+  update_rdf_xmldoc = nil
+
+  File.open('update.rdf','r') do |f|
+    update_rdf_xmldoc = Document.new(f.read)
+
+    update_rdf_xmldoc.elements.each('//RDF:Description') do |element|
+      if element.attributes['em:version']
+        element.attributes['em:version'] = version_number
+      end
+
+      if element.attributes['em:updateHash']
+        element.attributes['em:updateHash'] = 'sha1:' + Digest::SHA1.hexdigest(open(xpi_filename).read)
+      end
+
+      if element.attributes['em:updateLink']
+        element.attributes['em:updateLink'] = UPDATE_LINK
+      end
+    end  
   end
 
-  sh "cd #{BUILD_DIR} && zip -qr -9 ../../#{EXTENSION_NAME}-#{version_number}-fx.xpi *"
-  rm_rf "build"
+  File.open('update.rdf','w') do |f|
+    update_rdf_xmldoc.write(f)
+  end
 end
 
 desc "install to local profile directory"
@@ -55,6 +81,8 @@ desc "uninstall from local profile directory"
 task :uninstall do
   File.unlink("#{firefox_profile_dir}/extensions/#{extension_id}")
 end
+
+task :default => :update_update_manifest
 
 def firefox_profile_dir(name = nil)
   name = 'default' unless name
@@ -85,4 +113,17 @@ def extension_id
       return element.text
     end
   end
+end
+
+def version_number
+  open('install.rdf') do |f|
+    install_rdf_xmldoc = Document.new(f.read)
+    install_rdf_xmldoc.elements.each('RDF/Description/em:version') do |element|
+      return element.text
+    end
+  end
+end
+
+def xpi_filename
+  "#{EXTENSION_NAME}-#{version_number}-fx.xpi"
 end
