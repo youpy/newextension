@@ -1,15 +1,15 @@
 Gem::Specification.new do |s|
   s.name = %q{newextension}
-  s.version = "0.1.0"
+  s.version = "0.1.2"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["youpy"]
-  s.date = %q{2008-08-21}
+  s.date = %q{2008-11-05}
   s.description = %q{Create a Firefox extension skeleton}
   s.email = ["youpy@buycheapviagraonlinenow.com"]
   s.executables = ["newextension", "newextension.orig"]
   s.extra_rdoc_files = ["History.txt", "License.txt", "Manifest.txt", "PostInstall.txt"]
-  s.files = ["History.txt", "License.txt", "Manifest.txt", "PostInstall.txt", "README.rdoc", "Rakefile", "app_generators/newextension/USAGE", "app_generators/newextension/newextension_generator.rb", "app_generators/newextension/templates/Rakefile", "app_generators/newextension/templates/chrome.manifest", "app_generators/newextension/templates/chrome/content/__extension__.js", "app_generators/newextension/templates/chrome/content/overlay.xul", "app_generators/newextension/templates/install.rdf", "bin/newextension", "bin/newextension.orig", "config/hoe.rb", "config/requirements.rb", "lib/newextension.rb", "lib/newextension/version.rb", "newextension.gemspec", "script/console", "script/destroy", "script/generate", "setup.rb", "tasks/deployment.rake", "tasks/environment.rake", "tasks/website.rake", "test/test_generator_helper.rb", "test/test_helper.rb", "test/test_newextension.rb", "test/test_newextension_generator.rb"]
+  s.files = ["History.txt", "License.txt", "Manifest.txt", "PostInstall.txt", "README.rdoc", "Rakefile", "app_generators/newextension/USAGE", "app_generators/newextension/newextension_generator.rb", "app_generators/newextension/templates/Rakefile", "app_generators/newextension/templates/chrome.manifest", "app_generators/newextension/templates/chrome/content/__extension__.js", "app_generators/newextension/templates/chrome/content/overlay.xul", "app_generators/newextension/templates/install.rdf", "app_generators/newextension/templates/update.rdf", "bin/newextension", "bin/newextension.orig", "config/hoe.rb", "config/requirements.rb", "lib/newextension.rb", "lib/newextension/version.rb", "newextension.gemspec", "script/console", "script/destroy", "script/generate", "setup.rb", "tasks/deployment.rake", "tasks/environment.rake", "tasks/website.rake", "test/test_generator_helper.rb", "test/test_helper.rb", "test/test_newextension.rb", "test/test_newextension_generator.rb"]
   s.has_rdoc = true
   s.homepage = %q{http://newextension.rubyforge.org}
   s.post_install_message = %q{}
