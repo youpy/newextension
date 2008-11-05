@@ -30,6 +30,7 @@ file "#{BUILD_DIR}/install.rdf" => [:create_buildchrome_dir] do
 end
 task :create_install_rdf => ["#{BUILD_DIR}/install.rdf"]
 
+task :create_extra_directories => []
 %w(defaults components modules).each do |dir|
   if File.directory?(dir)
     dst_dir = "#{BUILD_DIR}/#{dir}"
