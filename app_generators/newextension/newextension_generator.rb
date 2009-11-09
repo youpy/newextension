@@ -23,7 +23,7 @@ class NewextensionGenerator < RubiGen::Base
     @name             = base_name
     @extension_name   = @name
     @package_name      = @extension_name.downcase.gsub(/[^a-z]/, '')
-    @uuid             = UUID.random_create.to_s
+    @uuid             = UUIDTools::UUID.random_create.to_s
     extract_options
   end
 

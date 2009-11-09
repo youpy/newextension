@@ -8,7 +8,7 @@ RUBYFORGE_PROJECT = 'newextension' # The unix name for your project
 HOMEPATH = "http://#{RUBYFORGE_PROJECT}.rubyforge.org"
 DOWNLOAD_PATH = "http://rubyforge.org/projects/#{RUBYFORGE_PROJECT}"
 EXTRA_DEPENDENCIES = [
- ['uuidtools', '>= 1.0.3'],
+ ['uuidtools', '>= 2.1.0'],
  ['rubigen', '>= 1.3.2']
 ]    # An array of rubygem dependencies [name, version]
 
